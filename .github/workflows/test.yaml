@@ -30,4 +30,4 @@ jobs:
       - name: Test Python code
         run: 
           python main.py
-          python print("Hello")
+          echo "Hello Mathieu"
