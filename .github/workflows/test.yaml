@@ -30,4 +30,5 @@ jobs:
       - name: Test Python code
         run: 
           python main.py
-          echo "Hello Mathieu"
+      - name: Display Hello World
+        run: echo "Hello World"
