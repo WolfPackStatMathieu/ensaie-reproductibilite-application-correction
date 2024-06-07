@@ -14,3 +14,5 @@ Pour installer les dépendances
 ```bash
 pip install -r requirements.txt
 ```
+
+[![Python package](https://github.com/WolfPackStatMathieu/ensaie-reproductibilite-application-correction/actions/workflows/test.yaml/badge.svg)](https://github.com/WolfPackStatMathieu/ensaie-reproductibilite-application-correction/actions/workflows/test.yaml)
