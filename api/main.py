@@ -15,6 +15,7 @@ app = FastAPI(
 async def show_welcome_page():
     """
     Show welcome page with model name and version.
+    
     """
     html_content = """
     <html>
