@@ -54,7 +54,7 @@ pipe = create_pipeline(
 
 pipe.fit(X_train, y_train)
 
-dump(pipe, 'model.joblib')
+dump(pipe, 'api/model.joblib')
 
 # Evaluate the model
 score, matrix = evaluate_model(pipe, X_test, y_test)

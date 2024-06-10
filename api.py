@@ -50,15 +50,15 @@
 
 #     return prediction
 
-from fastapi import FastAPI
+# from fastapi import FastAPI
 
-app = FastAPI()
+# app = FastAPI()
 
-@app.get("/", tags=["Welcome"])
-def read_root():
-    return {"message": "Hello World"}
+# @app.get("/", tags=["Welcome"])
+# def read_root():
+#     return {"message": "Hello World"}
 
-@app.get("/items/{item_id}", tags=["Items"])
-async def read_item(item_id: int, q: str = None):
-    return {"item_id": item_id, "q": q}
+# @app.get("/items/{item_id}", tags=["Items"])
+# async def read_item(item_id: int, q: str = None):
+#     return {"item_id": item_id, "q": q}
 
