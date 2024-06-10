@@ -3,3 +3,5 @@ PyYAML
 scikit-learn
 fastapi
 uvicorn
+pydantic
+joblib
