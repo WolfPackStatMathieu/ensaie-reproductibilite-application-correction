@@ -17,7 +17,7 @@ args = parser.parse_args()
 
 n_trees = args.n_trees
 
-URL_RAW = "https://minio.lab.sspcloud.fr/lgaliana/ensae-reproductibilite/data/raw/data.csv"
+URL_RAW = "https://minio.lab.sspcloud.fr/mthomassin/ensae-reproductibilite/data/raw/data.csv"
 config = import_yaml_config("configuration/config.yaml")
 data_path = config.get("data_path", URL_RAW)
 data_train_path = config.get("train_path", "data/derived/train.csv")

@@ -6,7 +6,7 @@ ayant la structure suivante:
 
 ```yaml
 jeton_api: ####
-data_path: https://minio.lab.sspcloud.fr/lgaliana/ensae-reproductibilite/data/raw/data.csv
+data_path: https://minio.lab.sspcloud.fr/mthomassin/ensae-reproductibilite/data/raw/data.csv
 ```
 
 Pour installer les dépendances
