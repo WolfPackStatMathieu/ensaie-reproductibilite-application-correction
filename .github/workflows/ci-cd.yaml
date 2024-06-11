@@ -77,11 +77,3 @@ jobs:
           push: true  # Pousse l'image construite vers Docker Hub
           tags: ${{ steps.meta.outputs.tags }}  # Utilise les tags générés par l'étape Docker meta
           labels: ${{ steps.meta.outputs.labels }}  # Utilise les labels générés par l'étape Docker meta
-
-
-      # Étape pour déployer l'application sur Kubernetes
-      - name: Deploy to Kubernetes
-        run: |
-          kubectl apply -f deployment/deployment.yaml  # Applique la configuration du déploiement
-          kubectl apply -f deployment/service.yaml  # Applique la configuration du service
-          kubectl apply -f deployment/ingress.yaml  # Applique la configuration de l'ingress
