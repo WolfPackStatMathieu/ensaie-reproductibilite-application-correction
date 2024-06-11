@@ -78,15 +78,6 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}  # Utilise les tags générés par l'étape Docker meta
           labels: ${{ steps.meta.outputs.labels }}  # Utilise les labels générés par l'étape Docker meta
 
-      # Étape pour configurer kubectl pour interagir avec le cluster Kubernetes
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v1
-        with:
-          version: 'v1.20.0'  # Version de kubectl à utiliser
-
-      # Étape pour configurer kubeconfig
-      - name: Configure Kubeconfig
-        run: echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config  # Configure kubeconfig en utilisant le secret KUBECONFIG
 
       # Étape pour déployer l'application sur Kubernetes
       - name: Deploy to Kubernetes
