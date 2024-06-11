@@ -6,10 +6,8 @@ on:
       - main
       - dev
 
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -17,7 +15,6 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          # latest python minor
           python-version: '3.x'
       - name: Install dependencies
         run: |
@@ -29,3 +26,10 @@ jobs:
           pylint src --fail-under=6
       - name: Test Python code
         run: python train.py
+      - name: Create tag for prod
+        if: success()
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a prod-trigger -m "Trigger production build"
+          git push origin prod-trigger
