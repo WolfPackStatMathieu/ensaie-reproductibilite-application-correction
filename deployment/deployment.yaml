@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: titanic-deployment
-  labels:
-    app: titanic
 spec:
   replicas: 1
   selector:
@@ -15,7 +13,27 @@ spec:
         app: titanic
     spec:
       containers:
-      - name: titanic
+      - name: titanic-container
         image: wolfpackstatmathieu/application-correction:latest
         ports:
         - containerPort: 5000
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+      restartPolicy: Always

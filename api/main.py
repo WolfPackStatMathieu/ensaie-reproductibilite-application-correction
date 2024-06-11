@@ -53,3 +53,8 @@ async def predict(
     prediction = "Survived 🎉" if int(model.predict(df)) == 1 else "Dead ⚰️"
 
     return prediction
+
+    @app.get("/health", tags=["Health"])
+def health_check():
+    return {"status": "healthy"}
+
