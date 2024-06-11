@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 
 # Définir le répertoire de travail
-WORKDIR ${HOME}/titanic
+WORKDIR /app
 
 # Installer Python et les dépendances
 RUN apt-get -y update && \
@@ -16,8 +16,8 @@ COPY train.py .
 COPY src ./src
 COPY api ./api
 
-# Donner les permissions d'exécution au script run.sh
-RUN chmod +x ./api/run.sh
+# Exécuter train.py pendant la construction de l'image
+RUN python3 train.py
 
-# Lancer le script run.sh au démarrage du conteneur
-CMD ["bash", "-c", "./api/run.sh"]
+# Lancer Uvicorn au démarrage du conteneur
+CMD ["uvicorn", "api.main:app", "--reload", "--host", "0.0.0.0", "--port", "5000"]
