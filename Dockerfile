@@ -17,8 +17,8 @@ COPY src ./src
 COPY api ./api
 COPY run.sh .
 
-# Debug : Vérifier que run.sh est bien copié
-RUN ls -la /app
+# Debug : Vérifier que run.sh est bien copié et afficher son contenu
+RUN ls -la /app && cat /app/run.sh
 
 # Exécuter train.py pendant la construction de l'image
 RUN python3 train.py
