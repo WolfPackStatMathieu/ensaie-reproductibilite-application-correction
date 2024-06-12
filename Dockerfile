@@ -20,4 +20,4 @@ RUN python3 train.py
 # Rendre le script exécutable
 RUN chmod +x run.sh
 
-CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "5000"]
