@@ -15,7 +15,10 @@ RUN pip install -r requirements.txt
 COPY train.py .
 COPY src ./src
 COPY api ./api
+COPY run.sh .
 
+# Debug : Vérifier que run.sh est bien copié
+RUN ls -la /app
 
 # Exécuter train.py pendant la construction de l'image
 RUN python3 train.py
@@ -24,4 +27,4 @@ RUN python3 train.py
 RUN chmod +x run.sh
 
 # Lancer le script au démarrage du conteneur
-CMD [".api/run.sh"]
+CMD ["./run.sh"]
