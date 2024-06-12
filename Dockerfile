@@ -28,3 +28,6 @@ RUN chmod +x run.sh
 
 # Lancer le script au démarrage du conteneur
 CMD ["./run.sh"]
+
+# Garder le conteneur en vie
+ENTRYPOINT exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
