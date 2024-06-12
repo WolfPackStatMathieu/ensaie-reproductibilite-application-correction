@@ -54,7 +54,7 @@ async def predict(
 
     return prediction
 
-    @app.get("/health", tags=["Health"])
+@app.get("/health", tags=["Health"])
 def health_check():
     return {"status": "healthy"}
 
