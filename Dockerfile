@@ -16,8 +16,12 @@ COPY train.py .
 COPY src ./src
 COPY api ./api
 
+
 # Exécuter train.py pendant la construction de l'image
 RUN python3 train.py
 
-# Lancer Uvicorn au démarrage du conteneur
-CMD ["uvicorn", "api.main:app", "--reload", "--host", "0.0.0.0", "--port", "5000"]
+# Rendre le script exécutable
+RUN chmod +x run.sh
+
+# Lancer le script au démarrage du conteneur
+CMD [".api/run.sh"]
