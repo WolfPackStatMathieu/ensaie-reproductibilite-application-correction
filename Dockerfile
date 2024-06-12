@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Installer Python et les dépendances
 RUN apt-get -y update && \
-    apt-get install -y python3-pip
+    apt-get install -y python3-pip curl
 
 # Copier et installer les dépendances du projet
 COPY requirements.txt .
