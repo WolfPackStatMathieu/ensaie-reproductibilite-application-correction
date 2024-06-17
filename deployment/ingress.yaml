@@ -14,9 +14,9 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - wolfpackstatmathieulemonde.kub.sspcloud.fr
+    - toto.kub.sspcloud.fr
   rules:
-  - host: wolfpackstatmathieulemonde.kub.sspcloud.fr
+  - host: toto.kub.sspcloud.fr
     http:
       paths:
       - path: /
