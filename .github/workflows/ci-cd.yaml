@@ -77,5 +77,5 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true  # Pousse l'image construite vers Docker Hub
-          tags: ${{ steps.meta.outputs.tags }}  # Utilise les tags générés par l'étape Docker meta
+          tags: wolfpackstatmathieu/application-correction:v10.0.2 #${{ steps.meta.outputs.tags }}  # Utilise les tags générés par l'étape Docker meta
           labels: ${{ steps.meta.outputs.labels }}  # Utilise les labels générés par l'étape Docker meta

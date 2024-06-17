@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: titanic-container
-        image: wolfpackstatmathieu/application-correction:dev
+        image: wolfpackstatmathieu/application-correction:v10.0.2
         ports:
         - containerPort: 8000
 
