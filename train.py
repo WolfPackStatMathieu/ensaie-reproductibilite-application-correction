@@ -19,6 +19,8 @@ n_trees = args.n_trees
 
 URL_RAW = "https://minio.lab.sspcloud.fr/mthomassin/ensae-reproductibilite/data/raw/data.csv"
 config = import_yaml_config("configuration/config.yaml")
+print("-----------------------------------")
+print("URL_RAW=" + URL_RAW)
 data_path = config.get("data_path", URL_RAW)
 data_train_path = config.get("train_path", "data/derived/train.csv")
 data_test_path = config.get("test_path", "data/derived/test.csv")
