@@ -37,7 +37,7 @@ MAX_DEPTH = None
 MAX_FEATURES = "sqrt"
 
 
-# IMPORT ET STRUCTURATION DONNEES --------------------------------
+print("# IMPORT ET STRUCTURATION DONNEES --------------------------------")
 
 p = pathlib.Path("data/derived/")
 p.mkdir(parents=True, exist_ok=True)
@@ -54,10 +54,10 @@ X_train, X_test, y_train, y_test = split_train_test(
 )
 
 
-# PIPELINE ----------------------------
+print("# PIPELINE ----------------------------")
 
 
-# Create the pipeline
+print("# Create the pipeline")
 pipe = create_pipeline(
     n_trees, max_depth=MAX_DEPTH, max_features=MAX_FEATURES
 )
@@ -80,14 +80,14 @@ pipe_cross_validation = GridSearchCV(
 )
 
 
-# ESTIMATION ET EVALUATION ----------------------
+print("# ESTIMATION ET EVALUATION ----------------------")
 pipe_cross_validation.fit(X_train, y_train)
 pipe = pipe_cross_validation.best_estimator_
 
 
 dump(pipe, 'api/model.joblib')
 
-# Evaluate the model
+print("# Evaluate the model")
 score, matrix = evaluate_model(pipe, X_test, y_test)
 print(f"{score:.1%} de bonnes réponses sur les données de test pour validation")
 print(20 * "-")
