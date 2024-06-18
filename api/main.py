@@ -1,7 +1,7 @@
 """A simple API to expose our trained RandomForest model for Tutanic survival."""
 from fastapi import FastAPI
 from joblib import load
-
+import requests
 import pandas as pd
 import os
 
