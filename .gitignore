@@ -5,3 +5,7 @@ titanic/
 model.joblib
 myenv
 newenv
+/.quarto/
+*.html
+*_files
+_site/
