@@ -15,4 +15,5 @@ def evaluate_model(pipe, X_test, y_test):
     """
     score = pipe.score(X_test, y_test)
     matrix = confusion_matrix(y_test, pipe.predict(X_test))
+
     return score, matrix

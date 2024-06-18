@@ -33,10 +33,13 @@ def show_welcome_page():
 
 @app.get("/predict", tags=["Predict"])
 async def predict(
+    pclass: int = 3,
     sex: str = "female",
     age: float = 29.0,
     fare: float = 16.5,
-    embarked: str = "S"
+    embarked: str = "S",
+    has_cabin: int = 1,
+    ticket_len: int = 7
 ) -> str:
     """
     """
