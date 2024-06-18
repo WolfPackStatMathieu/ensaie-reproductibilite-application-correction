@@ -14,11 +14,12 @@ from src.data.import_data import import_yaml_config
 from src.pipeline.build_pipeline import split_train_test, create_pipeline
 from src.models.train_evaluate import evaluate_model
 from src.features.build_features import feature_engineering
+import src.models.log as mlog
 
 
 parser = argparse.ArgumentParser(description="Paramètres du random forest")
 parser.add_argument("--n_trees", type=int, default=20, help="Nombre d'arbres")
-parser.add_argument("--appli", type=str, default="appli21", help="Application number")
+parser.add_argument("--appli", type=str, default="appli22", help="Application number")
 args = parser.parse_args()
 
 n_trees = args.n_trees
@@ -84,6 +85,8 @@ print("# ESTIMATION ET EVALUATION ----------------------")
 pipe_cross_validation.fit(X_train, y_train)
 pipe = pipe_cross_validation.best_estimator_
 
+
+mlog.log_gsvc_to_mlflow(pipe_cross_validation, EXPERIMENT_NAME, APPLI_ID)
 
 dump(pipe, 'api/model.joblib')
 
