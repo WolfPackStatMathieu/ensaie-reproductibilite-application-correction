@@ -15,7 +15,7 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Exécuter train.py pendant la construction de l'image
-RUN python3 train.py
+# RUN python3 train.py
 
 # Rendre le script exécutable
 RUN chmod +x run.sh

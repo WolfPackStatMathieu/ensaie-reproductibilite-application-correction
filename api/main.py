@@ -12,7 +12,7 @@ username_sspcloud = "mthomassin"
 url = f"https://minio.lab.sspcloud.fr/{username_sspcloud}/ensae-reproductibilite/model/model.joblib"
 local_filename = "model.joblib"
 
-with open(local_filename, mode = "wb") as file:
+with open(local_filename, mode="wb") as file:
     file.write(requests.get(url).content)
 
 
