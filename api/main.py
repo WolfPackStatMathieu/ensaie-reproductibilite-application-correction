@@ -50,6 +50,8 @@ async def predict(
             "Age": [age],
             "Fare": [fare],
             "Embarked": [embarked],
+            "hasCabin": [has_cabin],
+            "Ticket_Len": [ticket_len]
         }
     )
 
