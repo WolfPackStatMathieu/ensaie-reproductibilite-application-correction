@@ -20,6 +20,8 @@ import src.models.log as mlog
 parser = argparse.ArgumentParser(description="Paramètres du random forest")
 parser.add_argument("--n_trees", type=int, default=20, help="Nombre d'arbres")
 parser.add_argument("--appli", type=str, default="appli22", help="Application number")
+parser.add_argument("--experiment_name", type=str, default="titanicml", help="Name of experiment")
+
 args = parser.parse_args()
 
 n_trees = args.n_trees
