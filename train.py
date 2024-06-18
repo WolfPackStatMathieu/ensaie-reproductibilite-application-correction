@@ -25,6 +25,8 @@ parser.add_argument("--experiment_name", type=str, default="titanicml", help="Na
 args = parser.parse_args()
 
 n_trees = args.n_trees
+EXPERIMENT_NAME = args.experiment_name
+APPLI_ID = args.appli
 
 URL_RAW = "https://minio.lab.sspcloud.fr/mthomassin/ensae-reproductibilite/data/raw/data.csv"
 config = import_yaml_config("configuration/config.yaml")
