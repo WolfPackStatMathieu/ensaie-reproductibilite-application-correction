@@ -6,9 +6,17 @@ import pandas as pd
 import os
 
 
-# Load the model
-model_path = os.path.join(os.path.dirname(__file__), 'model.joblib')
-model = load(model_path)
+# GET PRODUCTION MODEL -------------
+
+username_sspcloud = "mthomassin"
+url = f"https://minio.lab.sspcloud.fr/{username_sspcloud}/ensae-reproductibilite/model/model.joblib"
+local_filename = "model.joblib"
+
+with open(local_filename, mode = "wb") as file:
+    file.write(requests.get(url).content)
+
+
+model = load(local_filename)
 
 app = FastAPI(
     title="Prédiction de survie sur le Titanic",
