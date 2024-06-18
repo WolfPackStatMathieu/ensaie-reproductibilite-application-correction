@@ -74,7 +74,7 @@ def create_pipeline(
     categorical_transformer = Pipeline(
         steps=[
             ("imputer", SimpleImputer(strategy="most_frequent")),
-            ("onehot", OneHotEncoder()),
+            ("onehot", OneHotEncoder(handle_unknown='ignore')),
         ]
     )
 

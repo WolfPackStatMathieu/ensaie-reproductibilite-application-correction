@@ -10,8 +10,11 @@ def create_variable_title(data: pd.DataFrame, variable_name: str = "Name"):
         _type_: DataFrame with a title column
     """
 
-    data["Title"] = data[variable_name].str.split(",").str[1].str.split().str[0]
-
+    data["Title"] = data[variable_name].str.extract(' ([A-Za-z]+)\.', expand=False)
+    data["Title"] = data["Title"].replace(['Lady', 'Countess','Capt', 'Col', 'Don', 'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer', 'Dona'], 'Rare')
+    data["Title"] = data["Title"].replace('Mlle', 'Miss')
+    data["Title"] = data["Title"].replace('Ms', 'Miss')
+    data["Title"] = data["Title"].replace('Mme', 'Mrs')
     data.drop(labels=variable_name, axis=1, inplace=True)
 
     # Dona est présent dans le jeu de test à prédire mais
