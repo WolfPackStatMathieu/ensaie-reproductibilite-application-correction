@@ -7,12 +7,18 @@ import pathlib
 import pandas as pd
 from joblib import dump
 
+from sklearn.model_selection import GridSearchCV
+
+
 from src.data.import_data import import_yaml_config
 from src.pipeline.build_pipeline import split_train_test, create_pipeline
 from src.models.train_evaluate import evaluate_model
+from src.features.build_features import feature_engineering
+
 
 parser = argparse.ArgumentParser(description="Paramètres du random forest")
 parser.add_argument("--n_trees", type=int, default=20, help="Nombre d'arbres")
+parser.add_argument("--appli", type=str, default="appli21", help="Application number")
 args = parser.parse_args()
 
 n_trees = args.n_trees
@@ -36,7 +42,10 @@ MAX_FEATURES = "sqrt"
 p = pathlib.Path("data/derived/")
 p.mkdir(parents=True, exist_ok=True)
 
-TrainingData = pd.read_csv(data_path)
+titanic_raw = pd.read_csv(data_path)
+
+# Create a 'Title' variable
+TrainingData = feature_engineering(titanic_raw)
 
 X_train, X_test, y_train, y_test = split_train_test(
     TrainingData, test_size=0.1,
@@ -54,9 +63,27 @@ pipe = create_pipeline(
 )
 
 
-# ESTIMATION ET EVALUATION ----------------------
+param_grid = {
+    "classifier__n_estimators": [10, 20, 50],
+    "classifier__max_leaf_nodes": [5, 10, 50],
+}
 
-pipe.fit(X_train, y_train)
+
+pipe_cross_validation = GridSearchCV(
+    pipe,
+    param_grid=param_grid,
+    scoring=["accuracy", "precision", "recall", "f1"],
+    refit="f1",
+    cv=5,
+    n_jobs=5,
+    verbose=1,
+)
+
+
+# ESTIMATION ET EVALUATION ----------------------
+pipe_cross_validation.fit(X_train, y_train)
+pipe = pipe_cross_validation.best_estimator_
+
 
 dump(pipe, 'api/model.joblib')
 

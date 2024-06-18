@@ -40,7 +40,7 @@ def split_train_test(data, test_size, train_path="train.csv", test_path="test.cs
 def create_pipeline(
     n_trees,
     numeric_features=["Age", "Fare"],
-    categorical_features=["Embarked", "Sex"],
+    categorical_features=["Title", "Embarked", "Sex"],
     max_depth=None,
     max_features="sqrt",
 ):
@@ -53,7 +53,7 @@ def create_pipeline(
             Defaults to ["Age", "Fare"].
         categorical_features (list, optional): The categorical features to be included
             in the pipeline.
-            Defaults to ["Embarked", "Sex"].
+            Defaults to ["Title", "Embarked", "Sex"].
         max_depth (int, optional): The maximum depth of the random forest. Defaults to None.
         max_features (str, optional): The maximum number of features to consider
             when looking for the best split.
